@@ -1,4 +1,4 @@
-import { FETCHING, FETCH_SUCCESS, FETCH_FAILURE, ADDING, POST_FAILURE, POST_SUCCESS, DELETE_SUCCESS } from '../actions';
+import { FETCHING, FETCH_SUCCESS, FETCH_FAILURE, ADDING, POST_FAILURE, POST_SUCCESS, DELETE_SUCCESS, EDIT_SUCCESS } from '../actions';
 
 export const reducer = (state = initialState, action) =>  {
   switch(action.type) {
@@ -16,6 +16,8 @@ export const reducer = (state = initialState, action) =>  {
       return {...state, adding: false, error: action.payload}
     case DELETE_SUCCESS:
       return {...state, data: action.payload}
+    case EDIT_SUCCESS:
+      return {...state, data: action.payload}
     default:
       return state
   }  
@@ -23,7 +25,7 @@ export const reducer = (state = initialState, action) =>  {
 
 const initialState = {
   isFetching: false,
-  data: "",
+  data: [],
   error: "",
   adding: false,
   lastSmurf: "",

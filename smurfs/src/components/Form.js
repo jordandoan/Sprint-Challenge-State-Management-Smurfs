@@ -3,16 +3,17 @@ import { connect } from 'react-redux';
 
 import { useField } from '../hooks/useField';
 import { addSmurf } from './actions';
-o0op
+
 const Form = (props) => {
-  let [smurf, setSmurf] = useState();
-  let [name, setName, handleName] = useField();
-  let [height, setHeight, handleHeight] = useField();
-  let [age, setAge, handleAge] = useField();
+  let id = (props.data.length > 0 ? props.data[props.data.length - 1].id + 1 : props.data.length);
+  let [smurf, setSmurf] = useState({id: id});
+  let [name, setName, handleName] = useField("");
+  let [height, setHeight, handleHeight] = useField("");
+  let [age, setAge, handleAge] = useField("");
 
   useEffect(() => {
     setSmurf({
-      id: props.data.length,
+      ...smurf,
       name: name,
       height: height + "cm",
       age: age,
