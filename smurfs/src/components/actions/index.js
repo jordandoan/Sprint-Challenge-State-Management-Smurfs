@@ -6,6 +6,7 @@ export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
 export const POST_SUCCESS = "POST_SUCCESS";
 export const POST_FAILURE = "POST_FAILURE";
+export const DELETE_SUCCESS = "DELETE_SUCCESS";
 
 const URL = "http://localhost:3333/smurfs";
 
@@ -17,9 +18,13 @@ export const fetchData = () => dispatch => {
 }
 
 export const addSmurf = (smurf) => dispatch => {
-  console.log(smurf);
   dispatch({type: ADDING})
   axios.post(URL, smurf)
     .then(res => dispatch({type: POST_SUCCESS, payload: res.data}))
     .catch(err => dispatch({type: POST_FAILURE, payload: err.response}));
+}
+
+export const deleteSmurf = (id) => dispatch => {
+  axios.delete(URL+`/${id}`)
+    .then(res => dispatch({type: DELETE_SUCCESS, payload: res.data}))
 }
