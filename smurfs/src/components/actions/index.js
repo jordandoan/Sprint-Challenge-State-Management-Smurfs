@@ -17,6 +17,7 @@ export const fetchData = () => dispatch => {
 }
 
 export const addSmurf = (smurf) => dispatch => {
+  console.log(smurf);
   dispatch({type: ADDING})
   axios.post(URL, smurf)
     .then(res => dispatch({type: POST_SUCCESS, payload: res.data}))

@@ -5,13 +5,14 @@ import { useField } from '../hooks/useField';
 import { addSmurf } from './actions';
 
 const Form = (props) => {
-  let [smurf, setSmurf] = useState({});
+  let [smurf, setSmurf] = useState();
   let [name, setName, handleName] = useField();
   let [height, setHeight, handleHeight] = useField();
   let [age, setAge, handleAge] = useField();
 
   useEffect(() => {
     setSmurf({
+      id: props.data.length,
       name: name,
       height: height + "cm",
       age: age,
@@ -41,7 +42,7 @@ const Form = (props) => {
       {props.adding && <p>Adding Smurf...</p>}
       {!props.adding && props.lastSmurf && 
         <div>
-          Here is your new smurf. Hit the button above to show the database which includes your newly added smurf.
+          Here is your new smurf. The database above shows your new smurf.
           <div>
             <h2>{props.lastSmurf.name}</h2>
             <p>{props.lastSmurf.age} years old</p>
@@ -56,6 +57,7 @@ const Form = (props) => {
 const mapStateToProps = state => {
   return {
     adding: state.adding,
+    data: state.data,
     lastSmurf: state.lastSmurf,
   }
 }

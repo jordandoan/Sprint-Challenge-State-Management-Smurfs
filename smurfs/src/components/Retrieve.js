@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchData } from './actions';
 
 const Retrieve = (props) => {
+  useEffect(() => {
+    props.fetchData();
+  }, [])
   return (
     <div>
-      <button onClick={props.fetchData}>Retrieve Current Smurf Data</button>
       <div className="smurf-container">
         {props.isFetching && <p>Fetching data...</p>}
         {!props.isFetching && props.data &&
