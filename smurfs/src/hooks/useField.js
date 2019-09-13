@@ -5,5 +5,5 @@ export const useField = () => {
   const handleChange = (event) => {
     setValue(event.target.value);
   }
-  return [value, handleChange]
+  return [value, setValue, handleChange]
 }

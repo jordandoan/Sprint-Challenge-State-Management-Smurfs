@@ -14,5 +14,7 @@ export const fetchData = () => dispatch => {
 }
 
 export const addSmurf = (smurf) => dispatch => {
-  axios.post()
+  console.log(smurf);
+  // dispatch({type: FETCHING})
+  // axios.post(URL, smurf)
 }
